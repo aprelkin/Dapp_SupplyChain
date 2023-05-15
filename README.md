@@ -1,35 +1,46 @@
-# Supply chain & data auditing
+## Supply Chain DApp
 
-This repository containts an Ethereum DApp that demonstrates a Supply Chain flow between a Seller and Buyer. The user story is similar to any commonly used supply chain process. A Seller can add items to the inventory system stored in the blockchain. A Buyer can purchase such items from the inventory system. Additionally a Seller can mark an item as Shipped, and similarly a Buyer can mark an item as Received.
+### UML Diagrams
 
-The DApp User Interface when running should look like...
+For the UML diagrams please check the folder /images.
 
-![truffle test](images/ftc_product_overview.png)
+- Activity diagram
+  ![Activity](images/act.png)
+- Sequence diagram
+  ![Sequence](images/seq.png)
+- Class diagram
+  ![Class](images/class.png)
+- State diagram
+  ![State](images/state.png)
 
-![truffle test](images/ftc_farm_details.png)
+### Libraries and Tools used
 
-![truffle test](images/ftc_product_details.png)
+Libraries used (contents of the package.json):
 
-![truffle test](images/ftc_transaction_history.png)
-
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-Please make sure you've already installed ganache-cli, Truffle and enabled MetaMask extension in your browser.
-
+ ```  
+  "dependencies": {
+    "web3": "^1.10.0",
+    "web3-utils": "^1.10.0",
+    "truffle-hdwallet-provider": "^1.0.17",
+    }
 ```
-Give examples (to be clarified)
-```
 
-### Installing
+* web3 1.10.0 used for the frontend user interface and connection with smart contract on the ethereum network.
+* web3-utils 1.10.0 for representation of product price as BN
+* truffle-hdwallet-provider 1.0.17 was used for deployment to Sepolia Test Etherium Network.
 
-> The starter code is written for **Solidity v0.4.24**. At the time of writing, the current Truffle v5 comes with Solidity v0.5 that requires function *mutability* and *visibility* to be specified (please refer to Solidity [documentation](https://docs.soliditylang.org/en/v0.5.0/050-breaking-changes.html) for more details). To use this starter code, please run `npm i -g truffle@4.1.14` to install Truffle v4 with Solidity v0.4.24. 
+For development, test and deployment I used truffle, ganache-cli.
 
-A step by step series of examples that tell you have to get a development env running
+* Truffle v5.1.14-nodeLTS.0 (core: 5.1.13)
+* Node v16.13.1
+
+### IPFS
+
+IPFS was not used.
+
+### General information:
+
+A step by step that tell you have to get a development env running
 
 Clone this repository:
 
@@ -50,19 +61,12 @@ Launch Ganache:
 ganache-cli -m "spirit supply whale amount human item harsh scare congress discover talent hamster"
 ```
 
-Your terminal should look something like this:
-
-![truffle test](images/ganache-cli.png)
 
 In a separate terminal window, Compile smart contracts:
 
 ```
 truffle compile
 ```
-
-Your terminal should look something like this:
-
-![truffle test](images/truffle_compile.png)
 
 This will create the smart contract artifacts in folder ```build\contracts```.
 
@@ -72,10 +76,6 @@ Migrate smart contracts to the locally running blockchain, ganache-cli:
 truffle migrate
 ```
 
-Your terminal should look something like this:
-
-![truffle test](images/truffle_migrate.png)
-
 Test smart contracts:
 
 ```
@@ -84,29 +84,30 @@ truffle test
 
 All 10 tests should pass.
 
-![truffle test](images/truffle_test.png)
-
 In a separate terminal window, launch the DApp:
 
 ```
 npm run dev
 ```
 
-## Built With
+Passed Tests:
 
-* [Ethereum](https://www.ethereum.org/) - Ethereum is a decentralized platform that runs smart contracts
-* [IPFS](https://ipfs.io/) - IPFS is the Distributed Web | A peer-to-peer hypermedia protocol
-to make the web faster, safer, and more open.
-* [Truffle Framework](http://truffleframework.com/) - Truffle is the most popular development framework for Ethereum with a mission to make your life a whole lot easier.
+![Tests](images/tests.png)
 
+### Deployment
 
-## Authors
+**SupplyChain** smart contract deployed to the following address on the Sepolia network:
 
-See also the list of [contributors](https://github.com/your/project/contributors.md) who participated in this project.
+```
+transaction hash:    0xfbb93c23b274ebbca919b04974c6b4d889258def560fcb3def02aeb967ac3255
+contract address:    0xd4d9688bC9403DA27700f6c5D6c09A5B808880eA
+account:             0xe946F6081990552E9398965805C07EF1F384a410
+```
 
-## Acknowledgments
+Migrations:
 
-* Solidity
-* Ganache-cli
-* Truffle
-* IPFS
+```
+transaction hash:    0x3758ebc388121379e6a4cb0519b2e17113ef049554054cae3739fac65a9951b2
+contract address:    0xD101995e2E8f9e6c4128aCf4dF984AD8542b0088
+account:             0xe946F6081990552E9398965805C07EF1F384a410
+```

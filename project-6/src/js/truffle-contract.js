@@ -17,21 +17,25 @@ var contract = (function(module) {
     this.provider = provider;
   }
 
-  Provider.prototype.send = function() {
+  Provider.prototype.send = function () {
     return this.provider.send.apply(this.provider, arguments);
   };
 
-  Provider.prototype.sendAsync = function() {
+  Provider.prototype.sendAsync = function () {
     return this.provider.sendAsync.apply(this.provider, arguments);
   };
+  //const Web3 = require('web3');
+  //var BigNumber = (new Web3()).toBigNumber(0).constructor;
 
-  var BigNumber = (new Web3()).toBigNumber(0).constructor;
+  const Web3 = require('web3');
+  const web3 = new Web3(); // Instantiate Web3 object without any arguments
 
+  var BigNumber = web3.utils.BN;
   var Utils = {
-    is_object: function(val) {
+    is_object: function (val) {
       return typeof val == "object" && !Array.isArray(val);
     },
-    is_big_number: function(val) {
+    is_big_number: function (val) {
       if (typeof val != "object") return false;
 
       // Instanceof won't work because we have multiple versions of Web3.
